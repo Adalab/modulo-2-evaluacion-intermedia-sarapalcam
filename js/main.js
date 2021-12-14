@@ -4,8 +4,10 @@ const inputSelect = document.querySelector(".js_select_form");
 const btnUpdate = document.querySelector(".js_btn_submit");
 const msgResult = document.querySelector(".js_result_msg");
 const restartBtn = document.querySelector(".js_restart_btn");
-let playerCounterSpan = document.querySelector(".js_player_counter");
-let pcCounterSpan = document.querySelector(".js_pc_counter");
+let playerCounter = document.querySelector(".js_player_counter");
+let pcCounter = document.querySelector(".js_pc_counter");
+let accPlayer = 0;
+let accPc = 0;
 
 function getSelectedValue() {
   const selectedValue = inputSelect.value;
@@ -52,14 +54,13 @@ function compareResults() {
   }
 }
 
-function updateCounter() {
-  let acc = 0;
+function updateResults() {
   if (msgResult.innerHTML === "¡Has ganado!") {
-    acc += 1;
-    playerCounterSpan.innerHTML = acc;
+    accPlayer += 1;
+    playerCounter.innerHTML += `${accPlayer}`;
   } else if (msgResult.innerHTML === "¡Has perdido!") {
-    acc += 1;
-    pcCounterSpan.innerHTML = acc;
+    accPc += 1;
+    pcCounter.innerHTML += `${accPc}`;
   }
 }
 
@@ -67,16 +68,18 @@ function createResetBtn() {
   restartBtn.classList.remove("hidden");
 }
 
+function handleRestartBtn() {
+  accPlayer = 0;
+  accPc = 0;
+  playerCounter.innerHTML = `Jugador: ${accPlayer}`;
+  pcCounter.innerHTML = `Computadora: ${accPc}`;
+}
+
 function handleClickUpdate(event) {
   event.preventDefault();
   compareResults();
   createResetBtn();
-  updateCounter();
-}
-
-function handleRestartBtn() {
-  playerCounterSpan.innerHTML = 0;
-  pcCounterSpan.innerHTML = 0;
+  updateResults();
 }
 
 btnUpdate.addEventListener("click", handleClickUpdate);
