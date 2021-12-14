@@ -8,11 +8,11 @@
     <title>Piedra, papel y tijera</title>
   </head>
   <body>
-    <main>
-      <h1>Juego Pieda, Papel y Tijera</h1>
-      <h2>Introduce aquí tu jugada</h2>
+    <main class="main">
+      <h1 class="title">Juego Piedra, Papel y Tijera</h1>
+      <h2 class="subtitle">Introduce aquí tu jugada</h2>
       <form action="">
-        <select class="js_select_form" name="piedra_papel_tijera">
+        <select class="js_select_form select_form" name="piedra_papel_tijera">
           <option value="Seleccionar" selected disabled hidden>
             Seleccione su jugada
           </option>
@@ -20,13 +20,14 @@
           <option value="Papel">Papel</option>
           <option value="Tijera">Tijera</option>
         </select>
-        <input class="js_btn_submit" type="submit" value="Jugar" />
+        <input class="js_btn_submit btn_submit" type="submit" value="Jugar" />
       </form>
       <p class="js_result_msg">¡Vamos a jugar!</p>
       <ul>
-        <li>Jugador: <span>0</span></li>
-        <li>Computadora: <span>0</span></li>
+        <li>Jugador: <span class="js_player_counter"></span></li>
+        <li>Computadora: <span class="js_pc_counter"></span></li>
       </ul>
+      <button class="hidden js_restart_btn">Reiniciar Juego</button>
     </main>
     <script type="text/javascript" src="./js/main.js"></script>
   </body>
