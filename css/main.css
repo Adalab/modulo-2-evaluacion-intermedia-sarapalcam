@@ -40,3 +40,22 @@
   border-radius: 5px;
   color: white;
 }
+
+.message {
+  background-color: rgb(45, 175, 154);
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  width: 200px;
+  text-align: center;
+}
+
+.btn_restart {
+  background-color: rgb(45, 175, 154);
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
