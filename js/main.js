@@ -6,6 +6,8 @@ const msgResult = document.querySelector(".js_result_msg");
 const restartBtn = document.querySelector(".js_restart_btn");
 let playerCounter = document.querySelector(".js_player_counter");
 let pcCounter = document.querySelector(".js_pc_counter");
+let playerCounter2 = document.querySelector(".js_player_counter2");
+let pcCounter2 = document.querySelector(".js_pc_counter2");
 let accPlayer = 0;
 let accPc = 0;
 
@@ -57,10 +59,10 @@ function compareResults() {
 function updateResults() {
   if (msgResult.innerHTML === "¡Has ganado!") {
     accPlayer += 1;
-    playerCounter.innerHTML += `${accPlayer}`;
+    playerCounter2.innerHTML = `${accPlayer}`;
   } else if (msgResult.innerHTML === "¡Has perdido!") {
     accPc += 1;
-    pcCounter.innerHTML += `${accPc}`;
+    pcCounter2.innerHTML = `${accPc}`;
   }
 }
 
