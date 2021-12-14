@@ -12,15 +12,17 @@
       <h1>Juego Pieda, Papel y Tijera</h1>
       <h2>Introduce aquí tu jugada</h2>
       <form action="">
-        <select name="" id="">
-          <option value="">Seleccione su jugada</option>
-          <option value="">Piedra</option>
-          <option value="">Papel</option>
-          <option value="">Tijera</option>
+        <select class="js_select_form" name="piedra_papel_tijera">
+          <option value="Seleccionar" selected disabled hidden>
+            Seleccione su jugada
+          </option>
+          <option value="Piedra">Piedra</option>
+          <option value="Papel">Papel</option>
+          <option value="Tijera">Tijera</option>
         </select>
-        <input type="submit" value="Jugar" />
+        <input class="js_btn_submit" type="submit" value="Jugar" />
       </form>
-      <p>¡Vamos a jugar!</p>
+      <p class="js_result_msg">¡Vamos a jugar!</p>
       <ul>
         <li>Jugador: <span>0</span></li>
         <li>Computadora: <span>0</span></li>
