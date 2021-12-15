@@ -1,87 +1,110 @@
 "use strict";
 
+// Declaramos las variables que recogen nuestros selectores de HTML
+
 const inputSelect = document.querySelector(".js_select_form");
 const btnUpdate = document.querySelector(".js_btn_submit");
 const msgResult = document.querySelector(".js_result_msg");
 const restartBtn = document.querySelector(".js_restart_btn");
+const playerCounter = document.querySelector(".js_player_counter");
+const pcCounter = document.querySelector(".js_pc_counter");
+const totalCounter = document.querySelector(".js_counter_msg");
+const numberRounds = document.querySelector(".js_number_rounds");
 
-let playerCounter = document.querySelector(".js_player_counter");
-let pcCounter = document.querySelector(".js_pc_counter");
+// Declaramos nuestras variables globales
+
 let accPlayer = 0;
 let accPc = 0;
+let accTotal = 0;
+
+// Funciones
 
 function getSelectedValue() {
-  const selectedValue = inputSelect.value;
-  console.log(`La usuaria ha seleccionado ${selectedValue}`);
-  return selectedValue;
+  console.log(`Usuaria: ${inputSelect.value}`);
+  return inputSelect.value;
 }
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 
-function getRandomPCResult() {
-  const randomNumber = getRandomNumber(3);
-  let pcResult = "";
-  if (randomNumber === 1) {
-    pcResult = "Piedra";
-  } else if (randomNumber === 2) {
-    pcResult = "Papel";
-  } else if (randomNumber === 3) {
-    pcResult = "Tijera";
+function generateRandomPlay() {
+  const randomNum = getRandomNumber(3);
+  if (randomNum === 1) {
+    console.log(`PC: Piedra`);
+    return "Piedra";
+  } else if (randomNum === 2) {
+    console.log(`PC: Papel`);
+    return "Papel";
+  } else if (randomNum === 3) {
+    console.log(`PC: Tijera`);
+    return "Tijera";
   }
-  console.log(`El ordenador ha sacado ${randomNumber}: ${pcResult}`);
-  return pcResult;
 }
 
 function compareResults() {
-  let userResultValue = getSelectedValue();
-  let pcResultValue = getRandomPCResult();
-
-  if (userResultValue === pcResultValue) {
+  const userResult = getSelectedValue();
+  const pcResult = generateRandomPlay();
+  if (userResult === pcResult) {
     msgResult.innerHTML = "¡Empate!";
   } else if (
-    (userResultValue === "Piedra" && pcResultValue === "Tijera") ||
-    (userResultValue === "Papel" && pcResultValue === "Piedra") ||
-    (userResultValue === "Tijera" && pcResultValue === "Papel")
+    (userResult === "Piedra" && pcResult === "Tijera") ||
+    (userResult === "Papel" && pcResult === "Piedra") ||
+    (userResult === "Tijera" && pcResult === "Papel")
   ) {
     msgResult.innerHTML = "¡Has ganado!";
+    accPlayer++;
+    playerCounter.innerHTML = accPlayer;
   } else if (
-    (userResultValue === "Piedra" && pcResultValue === "Papel") ||
-    (userResultValue === "Papel" && pcResultValue === "Tijera") ||
-    (userResultValue === "Tijera" && pcResultValue === "Piedra")
+    (userResult === "Piedra" && pcResult === "Papel") ||
+    (userResult === "Papel" && pcResult === "Tijera") ||
+    (userResult === "Tijera" && pcResult === "Piedra")
   ) {
     msgResult.innerHTML = "¡Has perdido!";
+    accPc++;
+    pcCounter.innerHTML = accPc;
   }
 }
 
-function updateResults() {
-  if (msgResult.innerHTML === "¡Has ganado!") {
-    accPlayer += 1;
-    playerCounter.innerHTML = `${accPlayer}`;
-  } else if (msgResult.innerHTML === "¡Has perdido!") {
-    accPc += 1;
-    pcCounter.innerHTML = `${accPc}`;
+function updateCounter() {
+  accTotal++;
+  numberRounds.innerHTML = 10 - accTotal;
+  if (accTotal === 10 && accPlayer === accPc) {
+    totalCounter.innerHTML = "Se ha acabado el juego ¡Habéis empatado!";
+  } else if (accTotal === 10 && accPlayer > accPc) {
+    totalCounter.innerHTML = "Se ha acabado el juego ¡Has ganado!";
+  } else if (accTotal === 10 && accPlayer < accPc) {
+    totalCounter.innerHTML = "Se ha acabado el juego ¡Has perdido!";
+  }
+  if (accTotal === 10) {
+    btnUpdate.classList.add("hidden");
+    restartBtn.classList.remove("hidden");
   }
 }
 
-function createResetBtn() {
-  restartBtn.classList.remove("hidden");
-}
-
-function handleRestartBtn() {
+function restartDefault() {
   accPlayer = 0;
   accPc = 0;
-  playerCounter.innerHTML = `Jugador: ${accPlayer}`;
-  pcCounter.innerHTML = `Computadora: ${accPc}`;
+  accTotal = 0;
+  playerCounter.innerHTML = `${accPlayer}`;
+  pcCounter.innerHTML = `${accPc}`;
+  btnUpdate.classList.remove("hidden");
+  restartBtn.classList.add("hidden");
 }
+
+// Funciones manejadoras de eventos
 
 function handleClickUpdate(event) {
   event.preventDefault();
   compareResults();
-  createResetBtn();
-  updateResults();
+  updateCounter();
 }
 
+function handleClickRestart(event) {
+  restartDefault();
+}
+
+// Eventos
+
 btnUpdate.addEventListener("click", handleClickUpdate);
-restartBtn.addEventListener("click", handleRestartBtn);
+restartBtn.addEventListener("click", handleClickRestart);
