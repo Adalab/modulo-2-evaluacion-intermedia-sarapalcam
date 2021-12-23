@@ -16,9 +16,9 @@
           <option value="Seleccionar" selected disabled hidden>
             Seleccione su jugada
           </option>
-          <option value="Piedra">Piedra</option>
-          <option value="Papel">Papel</option>
-          <option value="Tijera">Tijera</option>
+          <option class="js_option" value="Piedra">Piedra</option>
+          <option class="js_option" value="Papel">Papel</option>
+          <option class="js_option" value="Tijera">Tijera</option>
         </select>
         <input class="js_btn_submit btn_submit" type="submit" value="Jugar" />
       </form>
@@ -28,10 +28,12 @@
         <li>Computadora:<span class="js_pc_counter">0</span></li>
       </ul>
       <p class="js_counter_msg">
-        Te quedan <span class="js_number_rounds">10</span> jugadas
+        Te quedan <span class="js_number_rounds"></span> tiradas
       </p>
       <button class="hidden js_restart_btn btn_restart">Reiniciar Juego</button>
-    </main>
+  <img style="height: 200px; width: 200px" class="js_user_img" src="">
+  <img style="height: 200px; width: 200px" class="js_pc_img" src="">
+  </main>
     <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>

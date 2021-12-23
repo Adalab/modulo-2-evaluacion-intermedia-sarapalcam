@@ -9,15 +9,33 @@ const restartBtn = document.querySelector(".js_restart_btn");
 const playerCounter = document.querySelector(".js_player_counter");
 const pcCounter = document.querySelector(".js_pc_counter");
 const totalCounter = document.querySelector(".js_counter_msg");
-const numberRounds = document.querySelector(".js_number_rounds");
+const userImg = document.querySelector('.js_user_img');
+const pcImg = document.querySelector('.js_pc_img');
+const options = document.querySelectorAll('.js_option');
+
+let numberRounds = document.querySelector(".js_number_rounds");
 
 // Declaramos nuestras variables globales
 
 let accPlayer = 0;
 let accPc = 0;
 let accTotal = 0;
+numberRounds.innerHTML = 10;
 
 // Funciones
+
+function handleClickOption(event){
+  console.log(event.target);
+  console.log(event.currentTarget);
+if (event.target.value === "Piedra"){
+  userImg.src = "../images/piedra.png";
+} else if (event.target.value === "Papel"){
+  userImg.src = "../images/papel.jpg";
+}else if (event.target.value === "Tijera"){
+  userImg.src = "../images/tijeras.jpg";
+}
+};
+
 
 function getSelectedValue() {
   console.log(`Usuaria: ${inputSelect.value}`);
@@ -32,12 +50,15 @@ function generateRandomPlay() {
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     console.log(`PC: Piedra`);
+pcImg.src = "../images/piedra.png";
     return "Piedra";
   } else if (randomNum === 2) {
     console.log(`PC: Papel`);
+    pcImg.src = "../images/papel.jpg";
     return "Papel";
   } else if (randomNum === 3) {
     console.log(`PC: Tijera`);
+    pcImg.src = "../images/tijeras.jpg";
     return "Tijera";
   }
 }
@@ -69,7 +90,14 @@ function compareResults() {
 function updateCounter() {
   accTotal++;
   numberRounds.innerHTML = 10 - accTotal;
-  if (accTotal === 10 && accPlayer === accPc) {
+  totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
+  if (accTotal === 9 && accPlayer === accPc){
+    totalCounter.innerHTML = "Sólo te queda una tirada y hay un empate ¡Qué tensión!";
+  } else if 
+    (accTotal === 9 ){
+      totalCounter.innerHTML = "¡Sólo te queda una tirada!";
+  };
+   if (accTotal === 10 && accPlayer === accPc) {
     totalCounter.innerHTML = "Se ha acabado el juego ¡Habéis empatado!";
   } else if (accTotal === 10 && accPlayer > accPc) {
     totalCounter.innerHTML = "Se ha acabado el juego ¡Has ganado!";
@@ -88,8 +116,11 @@ function restartDefault() {
   accTotal = 0;
   playerCounter.innerHTML = `${accPlayer}`;
   pcCounter.innerHTML = `${accPc}`;
+  numberRounds.innerHTML = 10;
   btnUpdate.classList.remove("hidden");
   restartBtn.classList.add("hidden");
+  totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
+
 }
 
 // Funciones manejadoras de eventos
@@ -100,7 +131,7 @@ function handleClickUpdate(event) {
   updateCounter();
 }
 
-function handleClickRestart(event) {
+function handleClickRestart() {
   restartDefault();
 }
 
@@ -108,3 +139,7 @@ function handleClickRestart(event) {
 
 btnUpdate.addEventListener("click", handleClickUpdate);
 restartBtn.addEventListener("click", handleClickRestart);
+
+for (const option of options){
+  option.addEventListener("click", handleClickOption)
+}

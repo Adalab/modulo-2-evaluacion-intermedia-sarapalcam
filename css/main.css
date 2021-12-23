@@ -59,3 +59,11 @@
   border-radius: 5px;
   color: white;
 }
+
+.img_container {
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-size: cover;
+  background-color: aquamarine;
+}
