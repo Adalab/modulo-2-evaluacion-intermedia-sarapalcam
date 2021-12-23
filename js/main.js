@@ -11,7 +11,7 @@ const pcCounter = document.querySelector(".js_pc_counter");
 const totalCounter = document.querySelector(".js_counter_msg");
 const userImg = document.querySelector('.js_user_img');
 const pcImg = document.querySelector('.js_pc_img');
-const options = document.querySelectorAll('.js_option');
+const inputOptions = document.querySelectorAll('.js_option');
 
 let numberRounds = document.querySelector(".js_number_rounds");
 
@@ -24,19 +24,6 @@ numberRounds.innerHTML = 10;
 
 // Funciones
 
-function handleClickOption(event){
-  console.log(event.target);
-  console.log(event.currentTarget);
-if (event.target.value === "Piedra"){
-  userImg.src = "../images/piedra.png";
-} else if (event.target.value === "Papel"){
-  userImg.src = "../images/papel.jpg";
-}else if (event.target.value === "Tijera"){
-  userImg.src = "../images/tijeras.jpg";
-}
-};
-
-
 function getSelectedValue() {
   console.log(`Usuaria: ${inputSelect.value}`);
   return inputSelect.value;
@@ -47,6 +34,7 @@ function getRandomNumber(max) {
 }
 
 function generateRandomPlay() {
+  pcImg.classList.remove("pc_img");
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     console.log(`PC: Piedra`);
@@ -135,11 +123,21 @@ function handleClickRestart() {
   restartDefault();
 }
 
+function handleChangeInput(){
+  pcImg.src="";
+  pcImg.classList.add("pc_img");
+  if (inputSelect.value === "Piedra"){
+       userImg.src = "../images/piedra.png";
+     } else if (inputSelect.value === "Papel"){
+       userImg.src = "../images/papel.jpg";
+     } else if (inputSelect.value === "Tijera"){
+       userImg.src = "../images/tijeras.jpg";
+     }
+}
+
 // Eventos
 
 btnUpdate.addEventListener("click", handleClickUpdate);
 restartBtn.addEventListener("click", handleClickRestart);
+inputSelect.addEventListener("click", handleChangeInput);
 
-for (const option of options){
-  option.addEventListener("click", handleClickOption)
-}
