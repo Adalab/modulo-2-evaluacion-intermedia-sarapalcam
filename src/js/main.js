@@ -38,15 +38,15 @@ function generateRandomPlay() {
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     console.log(`PC: Piedra`);
-    pcImg.src = '../images/piedra.png';
+    pcImg.src = '.assets/images/piedra.png';
     return 'Piedra';
   } else if (randomNum === 2) {
     console.log(`PC: Papel`);
-    pcImg.src = '../images/papel.png';
+    pcImg.src = '.assets/images/papel.png';
     return 'Papel';
   } else if (randomNum === 3) {
     console.log(`PC: Tijera`);
-    pcImg.src = '../images/tijeras.png';
+    pcImg.src = '.assets/images/tijeras.png';
     return 'Tijera';
   }
 }
@@ -126,11 +126,11 @@ function handleChangeInput(){
   pcImg.src='./assets/images/placeholder.png';
   pcImg.classList.add('result__display--pc--img');
   if (inputSelect.value === 'Piedra'){
-    userImg.src = '../images/piedra.png';
+    userImg.src = '.assets/images/piedra.png';
   } else if (inputSelect.value === 'Papel'){
-    userImg.src = '../images/papel.png';
+    userImg.src = '.assets/images/papel.png';
   } else if (inputSelect.value === 'Tijera'){
-    userImg.src = '../images/tijeras.png';
+    userImg.src = '.assets/images/tijeras.png';
   }
 }
 
