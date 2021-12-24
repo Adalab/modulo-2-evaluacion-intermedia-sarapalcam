@@ -1,0 +1,193 @@
+.body{
+    @include tablet{
+        height: 100vh;
+}
+}
+
+.main {
+  width: 100%;
+  &__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $backgroundColorLanding;
+    @include tablet{
+height: 300px;
+    }
+  }
+  &__title {
+    font-family: $titleFont;
+    font-size: 60px;
+    color: $titleColorLanding;
+    line-height: 75px;
+    margin: 30% 10% 7%;
+    @include tablet{
+        margin: 5% 10% 0;
+    }
+  }
+  &__subtitle {
+    font-family: $titleFont;
+    font-size: 20px;
+    color: $subtitleColorLanding;
+    line-height: 40px;
+    margin: 0 7% 0 10%;
+    @include tablet{
+        margin: 2% 10%;
+    }
+  }
+}
+
+.game__container {
+  min-height: calc(100vh - 100px);
+  background-color: $backgroundColorGame;
+  padding: 12% 0;
+  
+}
+
+.form {
+margin: 0 10%;
+  display: flex;
+  flex-direction: column;
+  &__label {
+    font-family: $titleFont;
+    color: $titleColorGame;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--select {
+      margin: 25px 15px 0 0;
+      font-family: $textFont;
+      font-size: 16px;
+      padding: 4px;
+      border-radius: 5px;
+      width: 220px;
+      background-color: $titleColorGame;
+      color: $backgroundColorGame;
+      cursor: pointer;
+    }
+    &--btn {
+      margin-top: 25px;
+      font-family: $titleFont;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: $detailsColorGame;
+      border: none;
+      padding: 7px 0;
+      border-radius: 50px;
+      width: 140px;
+      cursor: pointer;
+      &--off {
+        background-color: rgb(223, 223, 223);
+        color: rgb(185, 185, 185);
+      }
+    }
+  }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  &__message {
+    font-family: $textFont;
+    font-size: 20px;
+    font-weight: 600;
+    &--container{
+        display: flex;
+     align-items: center;
+     justify-content: space-between;
+    }
+  }
+  &__restart {
+    margin-left: 15px;
+    font-family: $titleFont;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: $detailsColorGame;
+    border: none;
+    padding: 9px 0;
+    border-radius: 50px;
+    width: 200px;
+    cursor: pointer;
+  }
+  &__display{
+      margin: 5% 10%;
+      display: flex;
+align-items: center;
+justify-content: center;
+    &--text {
+        font-family: $textFont;
+        font-size: 16px;
+        margin: 10px 0;
+        text-align: center;
+      }
+      &--player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5px;
+      }
+      &--pc{
+          margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &--img{
+            width: 200px;
+      height: 200px;
+      background-position: center center;
+      background-size: cover;
+      animation-name: randomPcResult;
+      animation-duration: 0.3s;
+      animation-iteration-count: infinite;
+        }
+      }
+  }
+  
+  &__total--message{
+    font-family: $textFont;
+    font-size: 18px;
+    text-align: center;
+    color: $backgroundColorGame;
+    margin: 20px 0;
+    background-color: $titleColorGame;
+    padding: 10px 15px;
+    min-width: 280px;
+border-radius: 50px;
+  }
+}
+
+.footer{
+    background-color: $backgroundColorLanding;
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    &__small{
+        color: $subtitleColorLanding;
+        font-family: $textFont;
+        font-size: 12px;
+    }
+}
+
+@keyframes randomPcResult {
+  0% {
+    background-image: url(../images/piedra.png);
+  }
+  50% {
+    background-image: url(../images/papel.jpg);
+  }
+  100% {
+    background-image: url(../images/tijeras.jpg);
+  }
+}
+
+.hidden {
+  display: none;
+}

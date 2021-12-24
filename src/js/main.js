@@ -11,7 +11,6 @@ const pcCounter = document.querySelector(".js_pc_counter");
 const totalCounter = document.querySelector(".js_counter_msg");
 const userImg = document.querySelector('.js_user_img');
 const pcImg = document.querySelector('.js_pc_img');
-const inputOptions = document.querySelectorAll('.js_option');
 
 let numberRounds = document.querySelector(".js_number_rounds");
 
@@ -20,7 +19,7 @@ let numberRounds = document.querySelector(".js_number_rounds");
 let accPlayer = 0;
 let accPc = 0;
 let accTotal = 0;
-numberRounds.innerHTML = 10;
+numberRounds.innerHTML = "10";
 
 // Funciones
 
@@ -34,28 +33,29 @@ function getRandomNumber(max) {
 }
 
 function generateRandomPlay() {
+ 
   pcImg.classList.remove("pc_img");
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     console.log(`PC: Piedra`);
-pcImg.src = "../images/piedra.png";
+    pcImg.src = "../assets/images/piedra.png";
     return "Piedra";
   } else if (randomNum === 2) {
     console.log(`PC: Papel`);
-    pcImg.src = "../images/papel.jpg";
+    pcImg.src = "../assets/images/papel.jpg";
     return "Papel";
   } else if (randomNum === 3) {
     console.log(`PC: Tijera`);
-    pcImg.src = "../images/tijeras.jpg";
+    pcImg.src = "../assets/images/tijeras.jpg";
     return "Tijera";
   }
-}
+} 
 
 function compareResults() {
   const userResult = getSelectedValue();
   const pcResult = generateRandomPlay();
   if (userResult === pcResult) {
-    msgResult.innerHTML = "¡Empate!";
+    msgResult.innerHTML = "¡Empate!"; 
   } else if (
     (userResult === "Piedra" && pcResult === "Tijera") ||
     (userResult === "Papel" && pcResult === "Piedra") ||
@@ -81,8 +81,7 @@ function updateCounter() {
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
   if (accTotal === 9 && accPlayer === accPc){
     totalCounter.innerHTML = "Sólo te queda una tirada y hay un empate ¡Qué tensión!";
-  } else if 
-    (accTotal === 9 ){
+  } else if (accTotal === 9 ){
       totalCounter.innerHTML = "¡Sólo te queda una tirada!";
   };
    if (accTotal === 10 && accPlayer === accPc) {
@@ -93,7 +92,7 @@ function updateCounter() {
     totalCounter.innerHTML = "Se ha acabado el juego ¡Has perdido!";
   }
   if (accTotal === 10) {
-    btnUpdate.classList.add("hidden");
+    btnUpdate.classList.add("form__container--btn--off");
     restartBtn.classList.remove("hidden");
   }
 }
@@ -105,7 +104,7 @@ function restartDefault() {
   playerCounter.innerHTML = `${accPlayer}`;
   pcCounter.innerHTML = `${accPc}`;
   numberRounds.innerHTML = 10;
-  btnUpdate.classList.remove("hidden");
+  btnUpdate.classList.remove("form__container--btn--off");
   restartBtn.classList.add("hidden");
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
 
@@ -124,14 +123,14 @@ function handleClickRestart() {
 }
 
 function handleChangeInput(){
-  pcImg.src="";
+  pcImg.src="../assets/images/placeholder.png";
   pcImg.classList.add("pc_img");
   if (inputSelect.value === "Piedra"){
-       userImg.src = "../images/piedra.png";
+       userImg.src = "../assets/images/piedra.png";
      } else if (inputSelect.value === "Papel"){
-       userImg.src = "../images/papel.jpg";
+       userImg.src = "../assets/images/papel.jpg";
      } else if (inputSelect.value === "Tijera"){
-       userImg.src = "../images/tijeras.jpg";
+       userImg.src = "../assets/images/tijeras.jpg";
      }
 }
 
