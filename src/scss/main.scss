@@ -1,4 +1,8 @@
 @import "./core/reset.scss";
 @import "./core/variables";
 @import "./core/mixins";
-@import "./layout/page";
+@import "./layout/01_title_section";
+@import "./layout/02_game_section";
+@import "./layout/03_game_form";
+@import "./layout/04_game_result";
+@import "./layout/05_footer";

@@ -1,0 +1,139 @@
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    @include desktop{
+      margin-top: 1%;
+    }
+    &__message {
+      font-family: $textFont;
+      font-size: 20px;
+      font-weight: 600;
+      @include tablet{
+        font-size: 24px;
+        line-height: 20px;
+        margin-bottom: 25px;
+      }
+      @include desktop{
+        margin: 15px 0;
+        text-align:center;
+      }
+      &--container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include tablet{
+          flex-direction: column;
+        }
+        @include desktop{
+         
+          min-width: 400px;
+        }
+      }
+    }
+    &__restart {
+      margin-left: 15px;
+      font-family: $titleFont;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: $detailsColorGame;
+      border: none;
+      padding: 9px 0;
+      border-radius: 50px;
+      width: 200px;
+      cursor: pointer;
+    }
+    &__display {
+      margin: 5% 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include tablet{
+        min-width: 530px;
+        justify-content: space-between;
+      }
+      @include desktop{
+        margin: 0;
+      }
+      &--text {
+        font-family: $textFont;
+        font-size: 16px;
+        margin: 10px 0;
+        max-width: 150px;
+        text-align: center;
+        @include tablet{
+          text-align: left;
+          font-size: 18px;
+          margin: 0;
+          max-width: 220px;
+        }
+      }
+      &--player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 5px;
+      }
+      &--pc {
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &--img {
+          width: 200px;
+          height: 200px;
+          background-position: center center;
+          background-size: cover;
+          animation-name: randomPcResult;
+          animation-duration: 0.3s;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  
+    &__total--message {
+      font-family: $textFont;
+      font-size: 18px;
+      text-align: center;
+      color: $backgroundColorGame;
+      margin: 20px 0;
+      background-color: $titleColorGame;
+      padding: 10px 15px;
+      min-width: 280px;
+      border-radius: 50px;
+      @include tablet{
+        margin: 0;
+      }
+      @include desktop{
+        margin-top: 20px;
+      }
+    }
+  }
+  
+  
+  @keyframes randomPcResult {
+    0% {
+      background-image: url(../images/piedra.png);
+    }
+    50% {
+      background-image: url(../images/papel.png);
+    }
+    100% {
+      background-image: url(../images/tijeras.png);
+    }
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .images_responsive{
+    width: 120px;
+    height: 120px;
+    @include tablet{
+      width: 220px;
+      height: 220px;
+    }
+  }
