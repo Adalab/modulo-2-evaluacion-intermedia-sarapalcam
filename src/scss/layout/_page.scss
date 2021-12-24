@@ -1,18 +1,19 @@
-.body{
-    @include tablet{
-        height: 100vh;
-}
-}
-
 .main {
   width: 100%;
   &__container {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     background-color: $backgroundColorLanding;
-    @include tablet{
-height: 300px;
+    @include tablet {
+      height: 300px;
+    }
+    @include desktop{
+     height: 250px;
+     padding: 2% 10%;
+     justify-content: space-around;
     }
   }
   &__title {
@@ -21,8 +22,12 @@ height: 300px;
     color: $titleColorLanding;
     line-height: 75px;
     margin: 30% 10% 7%;
-    @include tablet{
-        margin: 5% 10% 0;
+    @include tablet {
+      margin: 4% 10% 0 10%;
+    }
+    @include desktop{
+      margin: 5% 10% 3% 10%;
+      line-height: 0;
     }
   }
   &__subtitle {
@@ -31,8 +36,12 @@ height: 300px;
     color: $subtitleColorLanding;
     line-height: 40px;
     margin: 0 7% 0 10%;
-    @include tablet{
-        margin: 2% 10%;
+    @include tablet {
+      margin: 2% 10% 0 10%;
+    }
+    @include desktop{
+      margin: 0 10%;
+      
     }
   }
 }
@@ -41,11 +50,19 @@ height: 300px;
   min-height: calc(100vh - 100px);
   background-color: $backgroundColorGame;
   padding: 12% 0;
-  
+  @include tablet {
+    padding: 4% 0;
+    min-height: calc(100vh - 600px);
+    
+  }
+  @include desktop{
+    padding: 1% 10%;
+    height: calc(100vh - 330px);
+  }
 }
 
 .form {
-margin: 0 10%;
+  margin: 0 10%;
   display: flex;
   flex-direction: column;
   &__label {
@@ -54,11 +71,23 @@ margin: 0 10%;
     font-size: 24px;
     font-weight: bold;
     line-height: 32px;
+    @include tablet {
+      font-size: 20px;
+    }
+    @include desktop{
+      text-align: center;
+    }
   }
   &__container {
     display: flex;
     align-items: center;
     justify-content: center;
+    @include tablet {
+      justify-content: flex-start;
+    }
+    @include desktop{
+      justify-content: center;
+    }
     &--select {
       margin: 25px 15px 0 0;
       font-family: $textFont;
@@ -69,6 +98,9 @@ margin: 0 10%;
       background-color: $titleColorGame;
       color: $backgroundColorGame;
       cursor: pointer;
+      @include tablet{
+        margin-right: 35px;
+      }
     }
     &--btn {
       margin-top: 25px;
@@ -95,14 +127,33 @@ margin: 0 10%;
   justify-content: center;
   align-items: center;
   margin-top: 5%;
+  @include desktop{
+    margin-top: 1%;
+  }
   &__message {
     font-family: $textFont;
     font-size: 20px;
     font-weight: 600;
-    &--container{
-        display: flex;
-     align-items: center;
-     justify-content: space-between;
+    @include tablet{
+      font-size: 24px;
+      line-height: 20px;
+      margin-bottom: 25px;
+    }
+    @include desktop{
+      margin: 15px 0;
+      text-align:center;
+    }
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include tablet{
+        flex-direction: column;
+      }
+      @include desktop{
+       
+        min-width: 400px;
+      }
     }
   }
   &__restart {
@@ -117,41 +168,55 @@ margin: 0 10%;
     width: 200px;
     cursor: pointer;
   }
-  &__display{
-      margin: 5% 10%;
-      display: flex;
-align-items: center;
-justify-content: center;
-    &--text {
-        font-family: $textFont;
-        font-size: 16px;
-        margin: 10px 0;
-        text-align: center;
-      }
-      &--player{
+  &__display {
+    margin: 5% 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-right: 5px;
+    justify-content: center;
+    @include tablet{
+      min-width: 530px;
+      justify-content: space-between;
+    }
+    @include desktop{
+      margin: 0;
+    }
+    &--text {
+      font-family: $textFont;
+      font-size: 16px;
+      margin: 10px 0;
+      max-width: 150px;
+      text-align: center;
+      @include tablet{
+        text-align: left;
+        font-size: 18px;
+        margin: 0;
+        max-width: 220px;
       }
-      &--pc{
-          margin-left: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        &--img{
-            width: 200px;
-      height: 200px;
-      background-position: center center;
-      background-size: cover;
-      animation-name: randomPcResult;
-      animation-duration: 0.3s;
-      animation-iteration-count: infinite;
-        }
+    }
+    &--player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 5px;
+    }
+    &--pc {
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &--img {
+        width: 200px;
+        height: 200px;
+        background-position: center center;
+        background-size: cover;
+        animation-name: randomPcResult;
+        animation-duration: 0.3s;
+        animation-iteration-count: infinite;
       }
+    }
   }
-  
-  &__total--message{
+
+  &__total--message {
     font-family: $textFont;
     font-size: 18px;
     text-align: center;
@@ -160,20 +225,33 @@ justify-content: center;
     background-color: $titleColorGame;
     padding: 10px 15px;
     min-width: 280px;
-border-radius: 50px;
+    border-radius: 50px;
+    @include tablet{
+      margin: 0;
+    }
+    @include desktop{
+      margin-top: 20px;
+    }
   }
 }
 
-.footer{
-    background-color: $backgroundColorLanding;
-    width: 100%;
-    height: 100px;
-    padding: 15px;
-    &__small{
-        color: $subtitleColorLanding;
-        font-family: $textFont;
-        font-size: 12px;
-    }
+.footer {
+  background-color: $backgroundColorLanding;
+  width: 100%;
+  height: 100px;
+  padding: 15px 10%;
+  @include tablet{
+    height: 80px;
+    padding: 35px 10%;
+  }
+  @include desktop{
+    padding: 35px 15%;
+  }
+  &__small {
+    color: $subtitleColorLanding;
+    font-family: $textFont;
+    font-size: 12px;
+  }
 }
 
 @keyframes randomPcResult {
@@ -181,13 +259,22 @@ border-radius: 50px;
     background-image: url(../images/piedra.png);
   }
   50% {
-    background-image: url(../images/papel.jpg);
+    background-image: url(../images/papel.png);
   }
   100% {
-    background-image: url(../images/tijeras.jpg);
+    background-image: url(../images/tijeras.png);
   }
 }
 
 .hidden {
   display: none;
+}
+
+.images_responsive{
+  width: 120px;
+  height: 120px;
+  @include tablet{
+    width: 220px;
+    height: 220px;
+  }
 }

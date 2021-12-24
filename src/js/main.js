@@ -34,7 +34,7 @@ function getRandomNumber(max) {
 
 function generateRandomPlay() {
  
-  pcImg.classList.remove("pc_img");
+  pcImg.classList.remove("result__display--pc--img");
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     console.log(`PC: Piedra`);
@@ -42,11 +42,11 @@ function generateRandomPlay() {
     return "Piedra";
   } else if (randomNum === 2) {
     console.log(`PC: Papel`);
-    pcImg.src = "../assets/images/papel.jpg";
+    pcImg.src = "../assets/images/papel.png";
     return "Papel";
   } else if (randomNum === 3) {
     console.log(`PC: Tijera`);
-    pcImg.src = "../assets/images/tijeras.jpg";
+    pcImg.src = "../assets/images/tijeras.png";
     return "Tijera";
   }
 } 
@@ -124,13 +124,13 @@ function handleClickRestart() {
 
 function handleChangeInput(){
   pcImg.src="../assets/images/placeholder.png";
-  pcImg.classList.add("pc_img");
+  pcImg.classList.add("result__display--pc--img");
   if (inputSelect.value === "Piedra"){
        userImg.src = "../assets/images/piedra.png";
      } else if (inputSelect.value === "Papel"){
-       userImg.src = "../assets/images/papel.jpg";
+       userImg.src = "../assets/images/papel.png";
      } else if (inputSelect.value === "Tijera"){
-       userImg.src = "../assets/images/tijeras.jpg";
+       userImg.src = "../assets/images/tijeras.png";
      }
 }
 
