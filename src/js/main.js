@@ -182,7 +182,7 @@ function restartDefault() {
 }
 
 // Funciones manejadoras de eventos
-function handleMouseoverLink(){
+function handleClickLink(){
   fetchRandomName();
 }
 
@@ -214,7 +214,7 @@ function handleChangeInput() {
 fetchRandomName();
 
 // Eventos
-linkName.addEventListener('mouseover', handleMouseoverLink);
+linkName.addEventListener('click', handleClickLink);
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
 inputSelect.addEventListener('click', handleClickInput);
