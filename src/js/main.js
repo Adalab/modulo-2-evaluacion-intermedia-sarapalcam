@@ -12,6 +12,9 @@ const totalCounter = document.querySelector('.js_counter_msg');
 const userImg = document.querySelector('.js_user_img');
 const pcImg = document.querySelector('.js_pc_img');
 let numberRounds = document.querySelector('.js_number_rounds');
+const randomWordN = document.querySelector('.js-random-n-word');
+const randomWordD = document.querySelector('.js-random-d-word');
+const randomWordY = document.querySelector('.js-random-y-word');
 
 // Declaramos nuestras variables globales
 const classNames = {
@@ -54,6 +57,23 @@ let accTotal = 0;
 numberRounds.innerHTML = '10';
 
 // Funciones
+fetch('https://random-word-form.herokuapp.com/random/noun/n')
+  .then((responseN) => responseN.json())
+  .then((wordN) => {
+    randomWordN.innerHTML = wordN;
+  });
+
+fetch('https://random-word-form.herokuapp.com/random/noun/d')
+  .then((responseD) => responseD.json())
+  .then((wordD) => {
+    randomWordD.innerHTML = wordD;
+  });
+
+fetch('https://random-word-form.herokuapp.com/random/noun/y')
+  .then((responseY) => responseY.json())
+  .then((wordY) => {
+    randomWordY.innerHTML = wordY;
+  });
 
 function getSelectedValue() {
   return inputSelect.value;
@@ -163,6 +183,6 @@ function handleChangeInput() {
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
 inputSelect.addEventListener('click', handleChangeInput);
-btnUpdate.addEventListener('touchend', handleClickUpdate);
-restartBtn.addEventListener('touchend', handleClickRestart);
-inputSelect.addEventListener('touchend', handleChangeInput);
+btnUpdate.addEventListener('touchstart', handleClickUpdate);
+restartBtn.addEventListener('touchstart', handleClickRestart);
+inputSelect.addEventListener('touchstart', handleChangeInput);

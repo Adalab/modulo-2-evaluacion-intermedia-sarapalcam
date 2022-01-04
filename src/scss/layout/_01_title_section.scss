@@ -32,9 +32,9 @@
   }
   &__subtitle {
     font-family: $titleFont;
-    font-size: 20px;
+    font-size: 16px;
     color: $subtitleColorLanding;
-    line-height: 40px;
+    line-height: 30px;
     margin: 0 7% 8% 10%;
     @include tablet {
       margin: 2% 10% 0 10%;
