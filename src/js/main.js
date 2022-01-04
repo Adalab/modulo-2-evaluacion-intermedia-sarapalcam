@@ -24,13 +24,13 @@ const srcImage = {
   rock: './assets/images/piedra.png',
   paper: './assets/images/papel.png',
   scissors: './assets/images/tijeras.png',
-  placeholder: './assets/images/placeholder.png'
+  placeholder: './assets/images/placeholder.png',
 };
 
 const message = {
   tie: '¡Empate!',
-  win:'¡Has ganado!',
-  lost: '¡Has perdido!'
+  win: '¡Has ganado!',
+  lost: '¡Has perdido!',
 };
 
 const messageCounter = {
@@ -41,12 +41,17 @@ const messageCounter = {
   finishedLost: 'Se ha acabado el juego ¡Has perdido!',
 };
 
+const playName = {
+  rock: 'Piedra',
+  paper: 'Papel',
+  scissors: 'Tijera',
+};
+
 let accPlayer = 0;
 let accPc = 0;
 let accTotal = 0;
 
 numberRounds.innerHTML = '10';
-
 
 // Funciones
 
@@ -63,13 +68,13 @@ function generateRandomPlay() {
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
     pcImg.src = srcImage.rock;
-    return 'Piedra';
+    return playName.rock;
   } else if (randomNum === 2) {
     pcImg.src = srcImage.paper;
-    return 'Papel';
+    return playName.paper;
   } else if (randomNum === 3) {
     pcImg.src = srcImage.scissors;
-    return 'Tijera';
+    return playName.scissors;
   }
 }
 
@@ -79,17 +84,17 @@ function compareResults() {
   if (userResult === pcResult) {
     msgResult.innerHTML = message.tie;
   } else if (
-    (userResult === 'Piedra' && pcResult === 'Tijera') ||
-    (userResult === 'Papel' && pcResult === 'Piedra') ||
-    (userResult === 'Tijera' && pcResult === 'Papel')
+    (userResult === playName.rock && pcResult === playName.scissors) ||
+    (userResult === playName.paper && pcResult === playName.rock) ||
+    (userResult === playName.scissors && pcResult === playName.paper)
   ) {
     msgResult.innerHTML = message.win;
     accPlayer++;
     playerCounter.innerHTML = accPlayer;
   } else if (
-    (userResult === 'Piedra' && pcResult === 'Papel') ||
-    (userResult === 'Papel' && pcResult === 'Tijera') ||
-    (userResult === 'Tijera' && pcResult === 'Piedra')
+    (userResult === playName.rock && pcResult === playName.paper) ||
+    (userResult === playName.paper && pcResult === playName.scissors) ||
+    (userResult === playName.scissors && pcResult === playName.rock)
   ) {
     msgResult.innerHTML = message.lost;
     accPc++;
@@ -101,9 +106,9 @@ function updateCounter() {
   accTotal++;
   numberRounds.innerHTML = 10 - accTotal;
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
-  if (accTotal === 9 && accPlayer === accPc){
+  if (accTotal === 9 && accPlayer === accPc) {
     totalCounter.innerHTML = messageCounter.lastRoundTie;
-  } else if (accTotal === 9 ){
+  } else if (accTotal === 9) {
     totalCounter.innerHTML = messageCounter.lastRound;
   }
   if (accTotal === 10 && accPlayer === accPc) {
@@ -142,14 +147,14 @@ function handleClickRestart() {
   restartDefault();
 }
 
-function handleChangeInput(){
-  pcImg.src= srcImage.placeholder;
+function handleChangeInput() {
+  pcImg.src = srcImage.placeholder;
   pcImg.classList.add(classNames.resultPcImage);
-  if (inputSelect.value === 'Piedra'){
+  if (inputSelect.value === playName.rock) {
     userImg.src = srcImage.rock;
-  } else if (inputSelect.value === 'Papel'){
+  } else if (inputSelect.value === playName.paper) {
     userImg.src = srcImage.paper;
-  } else if (inputSelect.value === 'Tijera'){
+  } else if (inputSelect.value === playName.scissors) {
     userImg.src = srcImage.scissors;
   }
 }
@@ -158,4 +163,6 @@ function handleChangeInput(){
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
 inputSelect.addEventListener('click', handleChangeInput);
-
+btnUpdate.addEventListener('touchend', handleClickUpdate);
+restartBtn.addEventListener('touchend', handleClickRestart);
+inputSelect.addEventListener('touchend', handleChangeInput);

@@ -10,94 +10,117 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Lato&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="shortcut icon" type="image/jpg" href="./assets/images/papel.png">
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="./assets/images/papel.png"
+    />
     <title>Piedra, papel o tijera</title>
   </head>
   <body class="body">
     <main class="main">
       <div class="main__container">
-          <h1 class="main__title">Piedra, Papel o Tijera</h1>
-          <h2 class="main__subtitle">
-            ¿Vencerás en este trepidante juego? ¿Podrás salvar a la humanidad del
-            malvado robot PPT-Randomatic-3000?
-          </h2>
-        </div>
-      <div class="game__container">
-          <form class="form" action="">
-              <label class="form__label" for="select"
-                >Introduce aquí tu jugada para vencer al malvado robot</label
+        <h1 class="main__title">Piedra, Papel o Tijera</h1>
+        <h2 class="main__subtitle">
+          ¿Vencerás en este trepidante juego? ¿Podrás salvar a la humanidad del
+          malvado robot Random-As-Nine-D-Y?
+        </h2>
+        <a href="#game"><i class="fas fa-arrow-down main__arrow"></i></a>
+      </div>
+
+      <div class="game__container" id="game">
+        <form class="form" action="">
+            <label class="form__label" for="select"
+              >Introduce aquí tu jugada para vencer al malvado robot</label
+            >
+            <div class="form__container">
+              <select
+                id="select"
+                class="js_select_form form__container--select"
+                name="piedra_papel_tijera"
               >
-              <div class="form__container">
-                <select
-                  id="select"
-                  class="js_select_form form__container--select"
-                  name="piedra_papel_tijera"
+                <option
+                  class="js_option form__select--option"
+                  value="Seleccionar"
+                  selected
+                  disabled
+                  hidden
                 >
-                  <option
-                    class="js_option form__select--option"
-                    value="Seleccionar"
-                    selected
-                    disabled
-                    hidden
+                  Selecciona tu jugada
+                </option>
+                <option class="js_option" value="Piedra">Piedra</option>
+                <option class="js_option" value="Papel">Papel</option>
+                <option class="js_option" value="Tijera">Tijera</option>
+              </select>
+              <input
+                class="js_btn_submit form__container--btn"
+                type="submit"
+                value="Jugar"
+              />
+            </div>
+          </form>
+        <div class="result">
+            <div class="result__message--container">
+              <p class="js_result_msg result__message">¡Vamos a jugar!</p>
+              <button class="hidden js_restart_btn result__restart">
+                Reiniciar Juego
+              </button>
+            </div>
+            <div class="result__display">
+              <div class="result__display--player">
+                <p class="result__display--text">
+                  Tu puntuación: <span class="js_player_counter result__player--counter"
+                    >0</span
                   >
-                    Selecciona tu jugada
-                  </option>
-                  <option class="js_option" value="Piedra">Piedra</option>
-                  <option class="js_option" value="Papel">Papel</option>
-                  <option class="js_option" value="Tijera">Tijera</option>
-                </select>
-                <input
-                  class="js_btn_submit form__container--btn"
-                  type="submit"
-                  value="Jugar"
+                </p>
+                <img
+                  class="js_user_img result__display--player--img images_responsive"
+                  src="./assets/images/placeholder.png"
                 />
               </div>
-            </form>
-          <div class="result">
-              <div class="result__message--container">
-                <p class="js_result_msg result__message">¡Vamos a jugar!</p>
-                <button class="hidden js_restart_btn result__restart">
-                  Reiniciar Juego
-                </button>
+              <div class="result__display--pc">
+                <p class="result__display--text">
+                  Puntuación de R.A.N.D.Y: <span class="js_pc_counter result__pc--counter"
+                    >0</span
+                  >
+                </p>
+                <img
+                  class="js_pc_img result__display--pc--img images_responsive"
+                  src="./assets/images/placeholder.png"
+                />
               </div>
-              <div class="result__display">
-                <div class="result__display--player">
-                  <p class="result__display--text">
-                    Tu puntuación: <span class="js_player_counter result__player--counter"
-                      >0</span
-                    >
-                  </p>
-                  <img
-                    class="js_user_img result__display--player--img images_responsive"
-                    src="./assets/images/placeholder.png"
-                  />
-                </div>
-                <div class="result__display--pc">
-                  <p class="result__display--text">
-                    Puntuación de R.A.N.D.Y: <span class="js_pc_counter result__pc--counter"
-                      >0</span
-                    >
-                  </p>
-                  <img
-                    class="js_pc_img result__display--pc--img images_responsive"
-                    src="./assets/images/placeholder.png"
-                  />
-                </div>
-              </div>
-              <p class="js_counter_msg result__total--message">
-                Te quedan
-                <span class="js_number_rounds result__total--counter"></span>
-                tiradas
-              </p>
             </div>
-          
-        </div>
-      
+            <p class="js_counter_msg result__total--message">
+              Te quedan
+              <span class="js_number_rounds result__total--counter"></span>
+              tiradas
+            </p>
+          </div>
+      </div>
+
     </main>
-   <footer class="footer">
-       <small class="footer__small">Developed by &copy;saradibujicos. 2021</small>
-     </footer>
+    <footer class="footer">
+      <small class="footer__small">Developed by Sara Palomo Campesino. 2022</small>
+      <div class="footer__contact">
+        <a href="https://github.com/sarapalcam" target="_blank"
+          ><i class="fab fa-github-alt footer__contact--github"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/sara-palomo-campesino/" target="_blank"
+          ><i class="fab fa-linkedin footer__contact--linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/saradibujicos/?hl=es" target="_blank"
+          ><i class="fab fa-instagram footer__contact--instagram"></i
+        ></a>
+      </div>
+    </footer>
+
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
 </html>

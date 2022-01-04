@@ -1,47 +1,60 @@
 .main {
-    width: 100%;
-    &__container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      background-color: $backgroundColorLanding;
-      @include tablet {
-        height: 300px;
-      }
-      @include desktop{
-       height: 250px;
-       padding: 2% 10%;
-       justify-content: space-around;
-      }
+  width: 100%;
+  &__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: $backgroundColorLanding;
+    @include tablet {
+      height: 300px;
     }
-    &__title {
-      font-family: $titleFont;
-      font-size: 60px;
-      color: $titleColorLanding;
-      line-height: 75px;
-      margin: 30% 10% 7%;
-      @include tablet {
-        margin: 4% 10% 0 10%;
-      }
-      @include desktop{
-        margin: 5% 10% 3% 10%;
-        line-height: 0;
-      }
-    }
-    &__subtitle {
-      font-family: $titleFont;
-      font-size: 20px;
-      color: $subtitleColorLanding;
-      line-height: 40px;
-      margin: 0 7% 0 10%;
-      @include tablet {
-        margin: 2% 10% 0 10%;
-      }
-      @include desktop{
-        margin: 0 10%;
-        
-      }
+    @include desktop {
+      height: 150px;
+      padding: 2% 10%;
+      justify-content: space-around;
     }
   }
+  &__title {
+    font-family: $titleFont;
+    font-size: 60px;
+    color: $titleColorLanding;
+    line-height: 75px;
+    margin: 30% 10% 7%;
+    @include tablet {
+      margin: 4% 10% 0 10%;
+    }
+    @include desktop {
+      margin: 40px 10%;
+      line-height: 0;
+    }
+  }
+  &__subtitle {
+    font-family: $titleFont;
+    font-size: 20px;
+    color: $subtitleColorLanding;
+    line-height: 40px;
+    margin: 0 7% 8% 10%;
+    @include tablet {
+      margin: 2% 10% 0 10%;
+    }
+    @include desktop {
+      margin: 0 10%;
+    }
+  }
+  &__arrow {
+    font-size: 40px;
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    animation: bounce 2s ease-in-out infinite;
+    color: $subtitleColorLanding;
+    text-shadow: 0 0 3px rgba($color: $subtitleColorLanding, $alpha: 0.678),
+      0 0 6px rgba($color: $titleColorLanding, $alpha: 0.8),
+      0 0 10px $titleColorLanding;
+    @include tablet {
+      display: none;
+    }
+  }
+}

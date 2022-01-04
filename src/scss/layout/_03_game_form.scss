@@ -1,60 +1,63 @@
- 
-  .form {
-    margin: 0 10%;
+.form {
+  margin: 0 10%;
+  display: flex;
+  flex-direction: column;
+  &__label {
+    font-family: $titleFont;
+    color: $titleColorGame;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+    margin-top: 20px;
+    @include tablet {
+      font-size: 20px;
+      margin-top: 50px;
+    }
+    @include desktop {
+      text-align: center;
+    }
+  }
+  &__container {
     display: flex;
-    flex-direction: column;
-    &__label {
-      font-family: $titleFont;
-      color: $titleColorGame;
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    @include tablet {
+      margin-top: 20px;
+      justify-content: flex-start;
+    }
+    @include desktop {
+      justify-content: center;
+    }
+    &--select {
+      margin: 25px 15px 0 0;
+      font-family: $textFont;
+      font-size: 16px;
+      padding: 4px;
+      border-radius: 5px;
+      width: 220px;
+      background-color: $titleColorGame;
+      color: $backgroundColorGame;
+      cursor: pointer;
       @include tablet {
-        font-size: 20px;
-      }
-      @include desktop{
-        text-align: center;
+        margin-right: 35px;
       }
     }
-    &__container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      @include tablet {
-        justify-content: flex-start;
-      }
-      @include desktop{
-        justify-content: center;
-      }
-      &--select {
-        margin: 25px 15px 0 0;
-        font-family: $textFont;
-        font-size: 16px;
-        padding: 4px;
-        border-radius: 5px;
-        width: 220px;
-        background-color: $titleColorGame;
-        color: $backgroundColorGame;
-        cursor: pointer;
-        @include tablet{
-          margin-right: 35px;
-        }
-      }
-      &--btn {
-        margin-top: 25px;
-        font-family: $titleFont;
-        font-size: 18px;
-        font-weight: bold;
-        background-color: $detailsColorGame;
-        border: none;
-        padding: 7px 0;
-        border-radius: 50px;
-        width: 140px;
-        cursor: pointer;
-        &--off {
-          background-color: rgb(223, 223, 223);
-          color: rgb(185, 185, 185);
-        }
+    &--btn {
+      margin-top: 25px;
+      font-family: $titleFont;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: $detailsColorGame;
+      border: none;
+      padding: 7px 0;
+      border-radius: 50px;
+      width: 140px;
+      cursor: pointer;
+      &--off {
+        background-color: rgb(223, 223, 223);
+        color: rgb(185, 185, 185);
       }
     }
   }
+}

@@ -1,0 +1,23 @@
+@keyframes bounce {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, -14px);
+  }
+  100% {
+    transform: translate(0, 0px);
+  }
+}
+
+@keyframes randomPcResult {
+  0% {
+    background-image: url(../images/piedra.png);
+  }
+  50% {
+    background-image: url(../images/papel.png);
+  }
+  100% {
+    background-image: url(../images/tijeras.png);
+  }
+}

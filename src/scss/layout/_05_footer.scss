@@ -1,18 +1,40 @@
 .footer {
-    background-color: $backgroundColorLanding;
-    width: 100%;
-    height: 100px;
-    padding: 15px 10%;
-    @include tablet{
-      height: 80px;
-      padding: 35px 10%;
+  background-color: $backgroundColorLanding;
+  width: 100%;
+  height: 100px;
+  padding: 15px 10%;
+  @include tablet {
+    height: 80px;
+    padding: 30px 10%;
+    display: flex;
+  }
+  @include desktop {
+    padding: 35px 15%;
+  }
+  &__small {
+    color: $subtitleColorLanding;
+    font-family: $textFont;
+    font-size: 12px;
+  }
+  &__contact {
+    width: 120px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+      margin: 0 0 0 50px;
     }
-    @include desktop{
-      padding: 35px 15%;
-    }
-    &__small {
+    &--github {
+      font-size: 22px;
       color: $subtitleColorLanding;
-      font-family: $textFont;
-      font-size: 12px;
+    }
+    &--linkedin {
+      font-size: 22px;
+      color: $subtitleColorLanding;
+    }
+    &--instagram {
+      font-size: 22px;
+      color: $subtitleColorLanding;
     }
   }
+}

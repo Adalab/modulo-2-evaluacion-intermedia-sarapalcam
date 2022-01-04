@@ -1,0 +1,42 @@
+.form__container--btn {
+  transition: all ease-in 0.2s;
+  &:hover {
+    background-color: rgb(238, 155, 30);
+  }
+  &:active {
+    background-color: $titleColorGame;
+    color: $backgroundColorGame;
+  }
+}
+
+.result__restart {
+  transition: all ease-in 0.2s;
+  &:hover {
+    background-color: rgb(238, 155, 30);
+  }
+  &:active {
+    background-color: $titleColorGame;
+    color: $backgroundColorGame;
+  }
+}
+
+.footer__contact--github {
+  transition: all ease-in 0.2s;
+  &:hover {
+    font-size: 30px;
+  }
+}
+
+.footer__contact--linkedin {
+  transition: all ease-in 0.2s;
+  &:hover {
+    font-size: 30px;
+  }
+}
+
+.footer__contact--instagram {
+  transition: all ease-in 0.2s;
+  &:hover {
+    font-size: 30px;
+  }
+}
