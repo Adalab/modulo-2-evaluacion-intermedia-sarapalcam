@@ -63,7 +63,7 @@ fetch('https://random-word-form.herokuapp.com/random/noun/n')
     randomWordN.innerHTML = wordN;
   });
 
-fetch('https://random-word-form.herokuapp.com/random/noun/d')
+fetch('https://random-word-form.herokuapp.com/random/adjective/d')
   .then((responseD) => responseD.json())
   .then((wordD) => {
     randomWordD.innerHTML = wordD;
@@ -72,7 +72,7 @@ fetch('https://random-word-form.herokuapp.com/random/noun/d')
 fetch('https://random-word-form.herokuapp.com/random/noun/y')
   .then((responseY) => responseY.json())
   .then((wordY) => {
-    randomWordY.innerHTML = wordY;
+    randomWordY.innerHTML = `${wordY}"`;
   });
 
 function getSelectedValue() {
@@ -167,9 +167,12 @@ function handleClickRestart() {
   restartDefault();
 }
 
-function handleChangeInput() {
+function handleClickInput() {
   pcImg.src = srcImage.placeholder;
   pcImg.classList.add(classNames.resultPcImage);
+}
+
+function handleChangeInput() {
   if (inputSelect.value === playName.rock) {
     userImg.src = srcImage.rock;
   } else if (inputSelect.value === playName.paper) {
@@ -182,7 +185,5 @@ function handleChangeInput() {
 // Eventos
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
-inputSelect.addEventListener('click', handleChangeInput);
-btnUpdate.addEventListener('touchstart', handleClickUpdate);
-restartBtn.addEventListener('touchstart', handleClickRestart);
-inputSelect.addEventListener('touchstart', handleChangeInput);
+inputSelect.addEventListener('click', handleClickInput);
+inputSelect.addEventListener('change', handleChangeInput);

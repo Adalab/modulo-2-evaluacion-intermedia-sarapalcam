@@ -42,6 +42,10 @@
     @include desktop {
       margin: 0 10%;
     }
+    &--random {
+      color: $titleColorLanding;
+      text-transform: capitalize;
+    }
   }
   &__arrow {
     font-size: 40px;
