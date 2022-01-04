@@ -122,6 +122,12 @@ function compareResults() {
   }
 }
 
+function endGameBtnsStatus(){
+  btnUpdate.disabled = true;
+  btnUpdate.classList.add(classNames.playBtnOff);
+  restartBtn.classList.remove(classNames.hidden);
+}
+
 function updateCounter() {
   accTotal++;
   numberRounds.innerHTML = 10 - accTotal;
@@ -139,9 +145,14 @@ function updateCounter() {
     totalCounter.innerHTML = messageCounter.finishedLost;
   }
   if (accTotal === 10) {
-    btnUpdate.classList.add(classNames.playBtnOff);
-    restartBtn.classList.remove(classNames.hidden);
+    endGameBtnsStatus();
   }
+}
+
+function restartBtnsStatus(){
+  btnUpdate.disabled = false;
+  btnUpdate.classList.remove(classNames.playBtnOff);
+  restartBtn.classList.add(classNames.hidden);
 }
 
 function restartDefault() {
@@ -151,9 +162,8 @@ function restartDefault() {
   playerCounter.innerHTML = `${accPlayer}`;
   pcCounter.innerHTML = `${accPc}`;
   numberRounds.innerHTML = 10;
-  btnUpdate.classList.remove(classNames.playBtnOff);
-  restartBtn.classList.add(classNames.hidden);
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
+  restartBtnsStatus();
 }
 
 // Funciones manejadoras de eventos
