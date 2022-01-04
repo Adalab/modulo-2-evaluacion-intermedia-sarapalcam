@@ -42,6 +42,9 @@
     @include desktop {
       margin: 0 10%;
     }
+    &--container{
+      display: inline;
+    }
     &--random {
       color: $titleColorLanding;
       text-transform: capitalize;

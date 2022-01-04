@@ -11,6 +11,7 @@ const pcCounter = document.querySelector('.js_pc_counter');
 const totalCounter = document.querySelector('.js_counter_msg');
 const userImg = document.querySelector('.js_user_img');
 const pcImg = document.querySelector('.js_pc_img');
+const linkName = document.querySelector('.js-generate-new-name');
 let numberRounds = document.querySelector('.js_number_rounds');
 const randomWordN = document.querySelector('.js-random-n-word');
 const randomWordD = document.querySelector('.js-random-d-word');
@@ -57,23 +58,37 @@ let accTotal = 0;
 numberRounds.innerHTML = '10';
 
 // Funciones
-fetch('https://random-word-form.herokuapp.com/random/noun/n')
-  .then((responseN) => responseN.json())
-  .then((wordN) => {
-    randomWordN.innerHTML = wordN;
-  });
+function fetchWordN(){
+  fetch('https://random-word-form.herokuapp.com/random/noun/n')
+    .then((responseN) => responseN.json())
+    .then((wordN) => {
+      randomWordN.innerHTML = wordN;
+    });
+}
 
-fetch('https://random-word-form.herokuapp.com/random/adjective/d')
-  .then((responseD) => responseD.json())
-  .then((wordD) => {
-    randomWordD.innerHTML = wordD;
-  });
+function fetchWordD(){
+  fetch('https://random-word-form.herokuapp.com/random/adjective/d')
+    .then((responseD) => responseD.json())
+    .then((wordD) => {
+      randomWordD.innerHTML = wordD;
+    });
 
-fetch('https://random-word-form.herokuapp.com/random/noun/y')
-  .then((responseY) => responseY.json())
-  .then((wordY) => {
-    randomWordY.innerHTML = wordY;
-  });
+}
+
+function fetchWordY(){
+  fetch('https://random-word-form.herokuapp.com/random/noun/y')
+    .then((responseY) => responseY.json())
+    .then((wordY) => {
+      randomWordY.innerHTML = wordY;
+    });
+}
+
+function fetchRandomName(){
+  fetchWordN();
+  fetchWordD();
+  fetchWordY();
+}
+
 
 function getSelectedValue() {
   return inputSelect.value;
@@ -167,6 +182,10 @@ function restartDefault() {
 }
 
 // Funciones manejadoras de eventos
+function handleMouseoverLink(){
+  fetchRandomName();
+}
+
 function handleClickUpdate(event) {
   event.preventDefault();
   compareResults();
@@ -192,7 +211,10 @@ function handleChangeInput() {
   }
 }
 
+fetchRandomName();
+
 // Eventos
+linkName.addEventListener('mouseover', handleMouseoverLink);
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
 inputSelect.addEventListener('click', handleClickInput);
