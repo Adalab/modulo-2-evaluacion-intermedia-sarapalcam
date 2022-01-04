@@ -72,7 +72,7 @@ fetch('https://random-word-form.herokuapp.com/random/adjective/d')
 fetch('https://random-word-form.herokuapp.com/random/noun/y')
   .then((responseY) => responseY.json())
   .then((wordY) => {
-    randomWordY.innerHTML = `${wordY}"`;
+    randomWordY.innerHTML = wordY;
   });
 
 function getSelectedValue() {

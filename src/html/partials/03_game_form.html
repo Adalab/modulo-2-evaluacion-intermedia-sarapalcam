@@ -1,30 +1,30 @@
 <form class="form" action="">
-    <label class="form__label" for="select"
-      >Introduce aquí tu jugada para vencer al malvado robot</label
+  <label class="form__label" for="select"
+    >Introduce aquí tu jugada para vencer a R.A.N.D.Y.</label
+  >
+  <div class="form__container">
+    <select
+      id="select"
+      class="js_select_form form__container--select"
+      name="piedra_papel_tijera"
     >
-    <div class="form__container">
-      <select
-        id="select"
-        class="js_select_form form__container--select"
-        name="piedra_papel_tijera"
+      <option
+        class="js_option form__select--option"
+        value="Seleccionar"
+        selected
+        disabled
+        hidden
       >
-        <option
-          class="js_option form__select--option"
-          value="Seleccionar"
-          selected
-          disabled
-          hidden
-        >
-          Selecciona tu jugada
-        </option>
-        <option class="js_option" value="Piedra">Piedra</option>
-        <option class="js_option" value="Papel">Papel</option>
-        <option class="js_option" value="Tijera">Tijera</option>
-      </select>
-      <input
-        class="js_btn_submit form__container--btn"
-        type="submit"
-        value="Jugar"
-      />
-    </div>
-  </form>
+        Selecciona tu jugada
+      </option>
+      <option class="js_option" value="Piedra">Piedra</option>
+      <option class="js_option" value="Papel">Papel</option>
+      <option class="js_option" value="Tijera">Tijera</option>
+    </select>
+    <input
+      class="js_btn_submit form__container--btn"
+      type="submit"
+      value="Jugar"
+    />
+  </div>
+</form>
