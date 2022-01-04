@@ -11,20 +11,46 @@ const pcCounter = document.querySelector('.js_pc_counter');
 const totalCounter = document.querySelector('.js_counter_msg');
 const userImg = document.querySelector('.js_user_img');
 const pcImg = document.querySelector('.js_pc_img');
-
 let numberRounds = document.querySelector('.js_number_rounds');
 
 // Declaramos nuestras variables globales
+const classNames = {
+  resultPcImage: 'result__display--pc--img',
+  playBtnOff: 'form__container--btn--off',
+  hidden: 'hidden',
+};
+
+const srcImage = {
+  rock: './assets/images/piedra.png',
+  paper: './assets/images/papel.png',
+  scissors: './assets/images/tijeras.png',
+  placeholder: './assets/images/placeholder.png'
+};
+
+const message = {
+  tie: '¡Empate!',
+  win:'¡Has ganado!',
+  lost: '¡Has perdido!'
+};
+
+const messageCounter = {
+  lastRoundTie: 'Sólo te queda una tirada y hay un empate ¡Qué tensión!',
+  lastRound: '¡Sólo te queda una tirada!',
+  finishedTie: 'Se ha acabado el juego ¡Habéis empatado!',
+  finishedWin: 'Se ha acabado el juego ¡Has ganado!',
+  finishedLost: 'Se ha acabado el juego ¡Has perdido!',
+};
 
 let accPlayer = 0;
 let accPc = 0;
 let accTotal = 0;
+
 numberRounds.innerHTML = '10';
+
 
 // Funciones
 
 function getSelectedValue() {
-  console.log(`Usuaria: ${inputSelect.value}`);
   return inputSelect.value;
 }
 
@@ -33,20 +59,16 @@ function getRandomNumber(max) {
 }
 
 function generateRandomPlay() {
-
-  pcImg.classList.remove('result__display--pc--img');
+  pcImg.classList.remove(classNames.resultPcImage);
   const randomNum = getRandomNumber(3);
   if (randomNum === 1) {
-    console.log(`PC: Piedra`);
-    pcImg.src = './assets/images/piedra.png';
+    pcImg.src = srcImage.rock;
     return 'Piedra';
   } else if (randomNum === 2) {
-    console.log(`PC: Papel`);
-    pcImg.src = './assets/images/papel.png';
+    pcImg.src = srcImage.paper;
     return 'Papel';
   } else if (randomNum === 3) {
-    console.log(`PC: Tijera`);
-    pcImg.src = './assets/images/tijeras.png';
+    pcImg.src = srcImage.scissors;
     return 'Tijera';
   }
 }
@@ -55,13 +77,13 @@ function compareResults() {
   const userResult = getSelectedValue();
   const pcResult = generateRandomPlay();
   if (userResult === pcResult) {
-    msgResult.innerHTML = '¡Empate!';
+    msgResult.innerHTML = message.tie;
   } else if (
     (userResult === 'Piedra' && pcResult === 'Tijera') ||
     (userResult === 'Papel' && pcResult === 'Piedra') ||
     (userResult === 'Tijera' && pcResult === 'Papel')
   ) {
-    msgResult.innerHTML = '¡Has ganado!';
+    msgResult.innerHTML = message.win;
     accPlayer++;
     playerCounter.innerHTML = accPlayer;
   } else if (
@@ -69,7 +91,7 @@ function compareResults() {
     (userResult === 'Papel' && pcResult === 'Tijera') ||
     (userResult === 'Tijera' && pcResult === 'Piedra')
   ) {
-    msgResult.innerHTML = '¡Has perdido!';
+    msgResult.innerHTML = message.lost;
     accPc++;
     pcCounter.innerHTML = accPc;
   }
@@ -80,20 +102,20 @@ function updateCounter() {
   numberRounds.innerHTML = 10 - accTotal;
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
   if (accTotal === 9 && accPlayer === accPc){
-    totalCounter.innerHTML = 'Sólo te queda una tirada y hay un empate ¡Qué tensión!';
+    totalCounter.innerHTML = messageCounter.lastRoundTie;
   } else if (accTotal === 9 ){
-    totalCounter.innerHTML = '¡Sólo te queda una tirada!';
+    totalCounter.innerHTML = messageCounter.lastRound;
   }
   if (accTotal === 10 && accPlayer === accPc) {
-    totalCounter.innerHTML = 'Se ha acabado el juego ¡Habéis empatado!';
+    totalCounter.innerHTML = messageCounter.finishedTie;
   } else if (accTotal === 10 && accPlayer > accPc) {
-    totalCounter.innerHTML = 'Se ha acabado el juego ¡Has ganado!';
+    totalCounter.innerHTML = messageCounter.finishedWin;
   } else if (accTotal === 10 && accPlayer < accPc) {
-    totalCounter.innerHTML = 'Se ha acabado el juego ¡Has perdido!';
+    totalCounter.innerHTML = messageCounter.finishedLost;
   }
   if (accTotal === 10) {
-    btnUpdate.classList.add('form__container--btn--off');
-    restartBtn.classList.remove('hidden');
+    btnUpdate.classList.add(classNames.playBtnOff);
+    restartBtn.classList.remove(classNames.hidden);
   }
 }
 
@@ -104,14 +126,12 @@ function restartDefault() {
   playerCounter.innerHTML = `${accPlayer}`;
   pcCounter.innerHTML = `${accPc}`;
   numberRounds.innerHTML = 10;
-  btnUpdate.classList.remove('form__container--btn--off');
-  restartBtn.classList.add('hidden');
+  btnUpdate.classList.remove(classNames.playBtnOff);
+  restartBtn.classList.add(classNames.hidden);
   totalCounter.innerHTML = `Te quedan ${numberRounds.innerHTML} tiradas`;
-
 }
 
 // Funciones manejadoras de eventos
-
 function handleClickUpdate(event) {
   event.preventDefault();
   compareResults();
@@ -123,19 +143,18 @@ function handleClickRestart() {
 }
 
 function handleChangeInput(){
-  pcImg.src='./assets/images/placeholder.png';
-  pcImg.classList.add('result__display--pc--img');
+  pcImg.src= srcImage.placeholder;
+  pcImg.classList.add(classNames.resultPcImage);
   if (inputSelect.value === 'Piedra'){
-    userImg.src = './assets/images/piedra.png';
+    userImg.src = srcImage.rock;
   } else if (inputSelect.value === 'Papel'){
-    userImg.src = './assets/images/papel.png';
+    userImg.src = srcImage.paper;
   } else if (inputSelect.value === 'Tijera'){
-    userImg.src = './assets/images/tijeras.png';
+    userImg.src = srcImage.scissors;
   }
 }
 
 // Eventos
-
 btnUpdate.addEventListener('click', handleClickUpdate);
 restartBtn.addEventListener('click', handleClickRestart);
 inputSelect.addEventListener('click', handleChangeInput);
